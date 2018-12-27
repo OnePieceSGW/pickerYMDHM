@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "pickerYMDHM": "/components/pickerYMDHM/pickerYMDHM"
+  },
+  "navigationBarTitleText": "测试"
+}

@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+  <pickerYMDHM bind:onPickerChange="onPickerChange">
+  </pickerYMDHM>
+</view>
