@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-   
+    date:'2019-01-01 12:38'
   },
   onLoad: function () {
 
@@ -15,5 +15,8 @@ Page({
  */
   onPickerChange: function (e) {
     console.log(e.detail);
+    this.setData({
+      date: e.detail.dateString
+    })
   },
 })

@@ -1,8 +1,8 @@
 <!--components/pickerYMDHM/pickerYMDHM.wxml-->
 <view>
   <picker mode="multiSelector" bindchange="pickerChange" bindcolumnchange="pickerColumnChange" bindcancel ="pickerCancel" value="{{pickerIndex}}" range="{{pickerArray}}" range-key="{{'name'}}">
-    <view style='font-size:.7rem;'>
-      当前选择：{{chooseArray[0][chooseIndex[0]].name}}，{{chooseArray[1][chooseIndex[1]].name}}，{{chooseArray[2][chooseIndex[2]].name}}，{{chooseArray[3][chooseIndex[3]].name}}，{{chooseArray[4][chooseIndex[4]].name}}
+    <view style='font-size:.7rem;background-color: #F8F8FF;line-height: 40px;padding:0px 10px;'>
+      {{date}}
     </view>
   </picker>
 </view>
