@@ -1,5 +1,5 @@
 <!--index.wxml-->
 <view class="container">
-  <pickerYMDHM bind:onPickerChange="onPickerChange" date="{{date}}">
+  <pickerYMDHM disabled = "{{disabled}}" bind:onPickerChange="onPickerChange" date="{{date}}">
   </pickerYMDHM>
 </view>

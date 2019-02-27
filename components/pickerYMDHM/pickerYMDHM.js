@@ -7,6 +7,10 @@ Component({
     date: {            // 属性名
       type: null,     // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
       value: ""     // 属性初始值（可选），如果未指定则会根据类型选择一个
+    },
+    disabled: {
+      type: null,     // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
+      value: false     // 属性初始值（可选），如果未指定则会根据类型选择一个
     }
   },
 
@@ -18,16 +22,16 @@ Component({
     pickerIndex: [],//日期控件选择的index
     chooseIndex: [],//日期控件确认选择的index
     chooseArray: [],//日期控件确认选择后的list
-    dateString:'',//页面显示日期
+    dateString: '',//页面显示日期
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    _onInit(){
+    _onInit() {
       let date = new Date();
-      if (this.data.date != ""){
+      if (this.data.date != "") {
         let str = this.data.date;
         str = str.replace(/-/g, "/");
         date = new Date(str);
@@ -91,7 +95,7 @@ Component({
         dateString: mdate.dateString
       })
       // console.log(date);
-      // this.triggerEvent('onPickerChange', mdate);
+      this.triggerEvent('onPickerChange', mdate);
       // console.log(this.data.pickerArray);
       // console.log(this._getNumOfDays(2018, 10));
     },
@@ -180,7 +184,7 @@ Component({
       // 在组件实例被从页面节点树移除时执行
     },
     ready() {
-      console.log('进入ready节点=',this.data.date);
+      console.log('进入ready节点=', this.data.date);
       this._onInit();
     }
   }

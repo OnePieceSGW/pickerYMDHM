@@ -4,7 +4,8 @@ const app = getApp()
 
 Page({
   data: {
-    date:'2019-01-01 12:38'
+    date:'2019-01-01 12:38',
+    disabled:true//设置是否能点击 false可以 true不能点击
   },
   onLoad: function () {
 
