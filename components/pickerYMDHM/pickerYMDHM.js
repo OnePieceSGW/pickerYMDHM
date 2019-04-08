@@ -6,7 +6,15 @@ Component({
   properties: {
     date: {            // 属性名
       type: null,     // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
-      value: ""     // 属性初始值（可选），如果未指定则会根据类型选择一个
+      value: null     // 属性初始值（可选），如果未指定则会根据类型选择一个
+    },
+    startDate: {
+      type: null,     // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
+      value: null     // 属性初始值（可选），如果未指定则会根据类型选择一个
+    },
+    endDate: {
+      type: null,     // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
+      value: null     // 属性初始值（可选），如果未指定则会根据类型选择一个
     },
     disabled: {
       type: null,     // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
@@ -31,7 +39,7 @@ Component({
   methods: {
     _onInit() {
       let date = new Date();
-      if (this.data.date != "") {
+      if (this.data.date != null) {
         let str = this.data.date;
         str = str.replace(/-/g, "/");
         date = new Date(str);
@@ -40,7 +48,28 @@ Component({
       // console.log(date.getFullYear());
       //默认选择3年内
       let year = [];
-      for (let i = date.getFullYear() - 1; i <= date.getFullYear() + 1; i++) {
+      let startDate = date.getFullYear() - 1;
+      let endDate = date.getFullYear() + 1;
+      if (this.data.startDate != null) {
+        //如果存在开始时间，则默认设置结束时间为2099
+        startDate = this.data.startDate;
+        endDate = 2099;
+      }
+      if (this.data.endDate != null && this.data.startDate == null) {
+        //如果存在结束时间，不存在开始时间 则默认设置开始时间为1900
+        endDate = this.data.endDate;
+        startDate = 1900;
+      }
+      if (this.data.endDate != null && this.data.startDate != null) {
+        endDate = this.data.endDate;
+      }
+      if (startDate > date.getFullYear() || endDate < date.getFullYear()){
+        this.setData({
+          dateString: "默认日期不在时间范围内"
+        })
+        return;
+      }
+      for (let i = startDate; i <= endDate; i++) {
         year.push({ id: i, name: i + "年" });
       }
       // console.log(year);
