@@ -10,3 +10,5 @@
 
 2019-02-27 添加是否允许点击属性disabled true不允许点击 false允许点击 默认false
 
+2019-04-08 修复部分BUG 添加开始日期startDate 结束日期endDate 如果都没添加 默认显示3年, 如果只添加startDate 则结束时间为2099 如果只添加endData 则开始日期为1900 
+
