@@ -118,8 +118,8 @@ Component({
       mdate.dateString = mdate.year + '-' + mdate.month + '-' + mdate.day + ' ' + mdate.time + ':' + mdate.division;
       this.setData({
         pickerArray,
-        pickerIndex: [1, date.getMonth(), date.getDate() - 1, date.getHours(), date.getMinutes()],
-        chooseIndex: [1, date.getMonth(), date.getDate() - 1, date.getHours(), date.getMinutes()],
+        pickerIndex: [date.getFullYear() - startDate, date.getMonth(), date.getDate() - 1, date.getHours(), date.getMinutes()],
+        chooseIndex: [date.getFullYear() - startDate, date.getMonth(), date.getDate() - 1, date.getHours(), date.getMinutes()],
         chooseArray: pickerArray,
         dateString: mdate.dateString
       })
