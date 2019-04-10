@@ -19,6 +19,10 @@ Component({
     disabled: {
       type: null,     // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
       value: false     // 属性初始值（可选），如果未指定则会根据类型选择一个
+    },
+    placeholder: {
+      type: null,     // 类型（必填），目前接受的类型包括：String, Number, Boolean, Object, Array, null（表示任意类型）
+      value: null     // 属性初始值（可选），如果未指定则会根据类型选择一个
     }
   },
 
@@ -121,10 +125,13 @@ Component({
         pickerIndex: [date.getFullYear() - startDate, date.getMonth(), date.getDate() - 1, date.getHours(), date.getMinutes()],
         chooseIndex: [date.getFullYear() - startDate, date.getMonth(), date.getDate() - 1, date.getHours(), date.getMinutes()],
         chooseArray: pickerArray,
-        dateString: mdate.dateString
+        dateString: this.data.placeholder != null ? this.data.placeholder : mdate.dateString
       })
       // console.log(date);
-      this.triggerEvent('onPickerChange', mdate);
+      //设置placeholder属性后 初始化不返回日期
+      if (this.data.placeholder == null){
+        this.triggerEvent('onPickerChange', mdate);
+      }
       // console.log(this.data.pickerArray);
       // console.log(this._getNumOfDays(2018, 10));
     },
