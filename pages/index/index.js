@@ -11,7 +11,14 @@ Page({
     placeholder:'请选择时间'
   },
   onLoad: function () {
-
+    let that = this;
+    setTimeout(function () {
+      console.log('doSomething')
+      that.setData({
+        date: '2019-01-01 13:37',
+        placeholder: '2019-01-01 13:37'
+      })
+    }, 2000);
   },
   /**
  * 日历控件绑定函数 

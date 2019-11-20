@@ -34,7 +34,6 @@ Component({
     pickerIndex: [],//日期控件选择的index
     chooseIndex: [],//日期控件确认选择的index
     chooseArray: [],//日期控件确认选择后的list
-    dateString: '',//页面显示日期
     stDate: '',//开始日期
     enDate: ''//结束日期
   },
@@ -87,7 +86,7 @@ Component({
       
       if (date > endDate || date < startDate) {
         this.setData({
-          dateString: "默认日期不在时间范围内"
+          placeholder: "默认日期不在时间范围内"
         })
         return;
       }
@@ -105,13 +104,13 @@ Component({
         time: date.getHours() < 10 ? '0' + date.getHours() : date.getHours() + '',
         division: date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes() + ''
       }
-      mdate.dateString = mdate.year + '-' + mdate.month + '-' + mdate.day + ' ' + mdate.time + ':' + mdate.division;
+      mdate.placeholder = mdate.year + '-' + mdate.month + '-' + mdate.day + ' ' + mdate.time + ':' + mdate.division;
       this.setData({
         pickerArray,
         pickerIndex: tpData.index,
         chooseIndex: tpData.index,
         chooseArray: pickerArray,
-        dateString: this.data.placeholder != null ? this.data.placeholder : mdate.dateString,
+        placeholder: this.data.placeholder != null ? this.data.placeholder : mdate.placeholder,
         stDate: startDate,
         enDate: endDate
       })
@@ -686,7 +685,7 @@ Component({
       this.setData({
         chooseIndex: e.detail.value,
         chooseArray: this.data.pickerArray,
-        dateString: date.dateString
+        placeholder: date.dateString
       })
       this.triggerEvent('onPickerChange', date);
     },
