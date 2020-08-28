@@ -46,7 +46,7 @@ Component({
       let date = new Date();
       if (this.data.date != null) {
         let str = this.data.date;
-        str = str.replace(/-/g, "/");
+        str = str.replace(/-/g, '/');
         date = new Date(str);
       }
       let pickerArray = this.data.pickerArray;
@@ -126,7 +126,7 @@ Component({
      * 
      */
     _getDefaultDate(date) {
-      date = date.replace(/-/g, "/");
+      date = date.replace(/-/g, '/');
       return new Date(date);
     },
     /**
@@ -673,7 +673,7 @@ Component({
       const time = this.data.pickerArray[3][indexArr[3]].id;
       const division = this.data.pickerArray[4][indexArr[4]].id;
       let date = {
-        date: new Date(year + '-' + month + '-' + day + ' ' + time + ':' + division),
+        date: new Date(year + '/' + month + '/' + day + ' ' + time + ':' + division),
         year: year + '',
         month: month < 10 ? '0' + month : month + '',
         day: day < 10 ? '0' + day : day + '',
@@ -710,7 +710,7 @@ Component({
       }
       
       // console.log(cYear + '-' + cMonth + '-' + cDay + ' ' + cTime + ':' + cDivision);
-      let newDate = this._getDefaultDate(cYear + '-' + cMonth + '-' + cDay + ' ' + cTime + ':' + cDivision);
+      let newDate = this._getDefaultDate(cYear + '/' + cMonth + '/' + cDay + ' ' + cTime + ':' + cDivision);
       //判断修改后的日期是否在限制范围内 不在则重新赋值
       if (newDate > this.data.enDate) {
         newDate = this.data.enDate;
